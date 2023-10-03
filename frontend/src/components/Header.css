@@ -1,0 +1,25 @@
+.Header {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 5rem;
+    background-color: rgb(61, 102, 121);
+
+}
+
+.Header ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+    list-style: none;
+
+}
+
+.Header ul li a {
+    font-size: 2rem;
+    text-decoration: none;
+    color: bisque;
+
+}
