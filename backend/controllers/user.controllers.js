@@ -3,7 +3,7 @@ import userSchema from '../models/mongoose/user.js';
 import portafolioSchema from '../models/mongoose/portafolio.js';
 import bcryptjs from 'bcryptjs';
 import generateJWT from '../helpers/generate.jwt.js';
-
+import getJWT from '../helpers/getJWT.js';
 export const addUser = async (req, res) => {
     try {
 
@@ -27,8 +27,27 @@ export const addUser = async (req, res) => {
 };
 
 export const updateUser = async (req, res ) => {
+    try {
+        
+        const {apijwt } = req.headers;
+        const id = await getJWT(apijwt)
 
 
+        res.json({
+            msg: id
+        })
+    } catch (error) {
+        res.status(404).json({
+            msg: error
+        })
+        
+    }
+
+
+
+};
+
+export const getOneUser = () => {
 
 };
 
@@ -54,15 +73,12 @@ export const loginUser = async (req, res = response) => {
         }
         
         const token = await generateJWT(user._id)
-
         res.json({
            user,
            token
         })
 
     } catch (error) {
-        console.log(error);
-        
         res.status.json({msg: 'Something Wrong Happen'});
     }
 };

@@ -5,10 +5,10 @@ const validateJWT = async (req = request, res = response, next) => {
     
 
     try {
-        const token = req.header('api-jwt');
+        const token = req.header('ApiJWT');
         if (!token) {
             return res.status(401).json({
-                msg: 'There is no api-jwt on the headers'
+                msg: 'Please Log in Again'
             });
         }
 
@@ -25,7 +25,7 @@ const validateJWT = async (req = request, res = response, next) => {
 
     if (req.url === "/raw-materials" && user.isAdmin === false && req.method !== "GET") {
         return res.status(401).json({
-            message: "You aren't an Admin so you cannot touch the raw-materials API"
+            message: "You aren't an Admin so you cannot touch the raw-materials API 🥵"
         });
     }
     next();
