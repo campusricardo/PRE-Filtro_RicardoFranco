@@ -35,7 +35,7 @@ const Register = () => {
     }
 
     return (
-    <main className="Register">
+    <main className="main">
         <Form>
             <Form.Field>
                 <label>Name</label>

@@ -18,7 +18,11 @@ const Header = () => {
           <ul>
             <li>
               <Link to='/home'>
-              <img src={recycling} alt="Recycling Logo"></img>
+                <figure className="logo">
+                  <figcaption> standart-recycling-company</figcaption>
+                <img src={recycling} alt="Recycling Logo"></img>
+
+                </figure>
               </Link>
             </li>
             <li>
@@ -48,7 +52,9 @@ const Header = () => {
             </li>
             <li>
               <Link to='/logout'>
+                <figure className="logo">
                 <img src={logout} alt="Log Out Icon"/>
+                </figure>
               </Link>
             </li>
           </ul>

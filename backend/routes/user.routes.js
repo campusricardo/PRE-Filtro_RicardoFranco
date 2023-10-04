@@ -1,11 +1,12 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { addUser, loginUser, updateUser } from '../controllers/user.controllers.js';
-import {verifyUser} from '../middlewares/db.validators.js';
+import { addUser, loginUser, updateUser, getOneUser, deleteUser } from '../controllers/user.controllers.js';
+import {verifyUser, verifyUpdate} from '../middlewares/db.validators.js';
 import validateDocuments  from "../middlewares/validate.documents.js";
 import validateJWT from "../middlewares/validate.jwt.js";
 const router = Router();
 
+router.get('/users', getOneUser);
 
 router.post('/users', [
     check('name', 'There is no name').not().isEmpty(),
@@ -26,15 +27,16 @@ router.post('/users/login', [
 ], loginUser);
 
 router.patch('/users', [
-    check('name', 'There is no name').not().isEmpty(),
-    check('username', 'There is no username').not().isEmpty(),
-    check('email', 'This is not an Email').not().isEmpty(),
-    check('email', 'This is not an Email').isEmail(),
-    check('password', 'There is no Password').not().isEmpty(),
-    check('age').isNumeric(),   
-    check('id', 'There is no ID').not().isEmpty(),
-    verifyUser,
+
     validateJWT,
+    verifyUpdate,
     validateDocuments,
 ], updateUser);
+
+router.delete('/users',
+[
+    validateJWT
+]
+,deleteUser);
+
 export default router;

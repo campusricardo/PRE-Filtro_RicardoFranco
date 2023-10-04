@@ -24,11 +24,10 @@ const Home = () => {
     }
 
     return (
-        <main className="Home">
-            <div>
-                Modificar Usuario
-            </div>
-            <Form>
+        <main >
+
+            <Form className="home">
+            <div> <h2> Update user data </h2> </div>
             <Form.Field>
                 <label>Name</label>
                 <input placeholder="Name" 
@@ -93,9 +92,10 @@ const Home = () => {
                 />
             </Form.Field>
             <Button onClick={modUser}> Change User Data</Button>
+            <Button> Delete User </Button>
+
             </Form>
 
-            <Button> Delete User </Button>
         </main>
     );
 };

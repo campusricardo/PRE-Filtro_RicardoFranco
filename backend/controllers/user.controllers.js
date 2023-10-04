@@ -30,29 +30,69 @@ export const updateUser = async (req, res ) => {
     try {
         
         const {apijwt } = req.headers;
-        const id = await getJWT(apijwt)
+        const {name, username, email, password, age, id, isAdmin} = req.body;
 
+        const oid = await getJWT(apijwt);
+        const modifyUser = await userSchema.findByIdAndUpdate(oid,{name, username, email, password, age, id});
+        if (isAdmin === process.env.ADMIN) {
+            modifyUser.isAdmin = false;
+        }
+        if (password) 
+        {
+            const salt = await bcryptjs.genSalt();
+            modifyUser.password = await bcryptjs.hash(password, salt);
+        }
+
+        await modifyUser.save();
 
         res.json({
-            msg: id
+            status: "success",
+            result: modifyUser
         })
     } catch (error) {
-        res.status(404).json({
-            msg: error
+        console.log(error);
+        res.status(202).json({
+            msg: "An unexpected error have occur "
         })
         
     }
 
-
-
 };
 
-export const getOneUser = () => {
+export const getOneUser = async (req, res) => {
+    try {
+        const {apijwt } = req.headers;
+        const id = await getJWT(apijwt);
+        const user = await userSchema.findById(id);
 
+        res.status(200).json({
+            status: "success",
+            result: user
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            msg: "An unexpected error have occur"
+        });
+    }
 };
 
 
 export const deleteUser = async (req, res) => {
+    try {
+        const {apijwt } = req.headers;
+        const id = await getJWT(apijwt);
+        const user = await userSchema.findByIdAndDelete(id);
+        res.status(202).json({
+            status: "success",
+            result: `User ${user.username} deleted successfully`
+        })
+    } catch (error) { 
+        console.log(error);
+        res.status(404).json({
+            status: "Uncompleated"
+        });
+    }
 
 };
 

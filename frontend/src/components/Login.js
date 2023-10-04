@@ -32,7 +32,7 @@ const Login = () => {
     }
 
         return (
-            <main className="Login">
+            <main className="main">
                 <Form>
                 <Form.Field>
                 <label>Username</label>

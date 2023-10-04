@@ -6,13 +6,26 @@
 html {
     font-size: 62.5%;
 }
+.App {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template: 
+    "header header header" 15%
+    "main main main" auto
+    ;
+}
+
+
 
 main {
-    background-color: rgb(67, 137, 216);
-
+    grid-area: main;
+    background-color: rgb(255, 255, 255);
+    height: auto;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-top: 2rem;
     justify-content: center;
-
+    
 }

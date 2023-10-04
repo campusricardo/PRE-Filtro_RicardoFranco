@@ -3,7 +3,7 @@
 const Market = () => {
 
     return (
-        <main className="Market"> 
+        <main className="main"> 
             Hola
         </main>
     )
