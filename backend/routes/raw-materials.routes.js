@@ -1,8 +1,9 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { addRawMaterial, getRawMaterial } from "../controllers/raw-materials.controllers.js";
+import { addRawMaterial, getRawMaterial, updateRawMaterial,  deleteRawMaterial} from "../controllers/raw-materials.controllers.js";
 import validateDocuments from "../middlewares/validate.documents.js";
 import validateJWT from "../middlewares/validate.jwt.js";
+import {verifyRawMaterialUpdate} from "../middlewares/db.validators.js";
 const router = Router();
 
 router.get('/raw-materials',[validateJWT], getRawMaterial)
@@ -18,6 +19,15 @@ validateJWT,
 validateDocuments
 ], addRawMaterial);
 
+router.patch('/raw-materials/:oid', [
+    validateJWT,
+    verifyRawMaterialUpdate,
+    validateDocuments
+], updateRawMaterial);
 
+
+router.delete('/raw-materials/:oid', [
+    validateJWT
+], deleteRawMaterial);
 
 export default router;

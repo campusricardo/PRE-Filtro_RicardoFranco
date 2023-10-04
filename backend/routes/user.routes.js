@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { check } from "express-validator";
 import { addUser, loginUser, updateUser, getOneUser, deleteUser } from '../controllers/user.controllers.js';
-import {verifyUser, verifyUpdate} from '../middlewares/db.validators.js';
+import {verifyUser, verifyUserUpdate} from '../middlewares/db.validators.js';
 import validateDocuments  from "../middlewares/validate.documents.js";
 import validateJWT from "../middlewares/validate.jwt.js";
 const router = Router();
@@ -29,7 +29,7 @@ router.post('/users/login', [
 router.patch('/users', [
 
     validateJWT,
-    verifyUpdate,
+    verifyUserUpdate,
     validateDocuments,
 ], updateUser);
 
