@@ -11,13 +11,16 @@ const Register = () => {
     let history = useHistory();
     const [values, setValues] = useState({
         name: '',
-        valuePerTon: '',
-        weightGcubicM: ''
+        username: '',
+        email: '',
+        password: '',
+        age: '',
+        id: '',
+        isAdmin: ''
     });
 
     const inputsHandler = (e) => {
-        console.log(values);
-        const value = e.target.id !== 'name' ? Number(e.target.value) : e.target.value;
+        const value = e.target.type === 'number' ? Number(e.target.value) : e.target.value;
         const key = e.target.id;
         setValues((prevValue) => { 
             return {...prevValue, [key]: value};
@@ -25,10 +28,8 @@ const Register = () => {
     };
 
     const postData = () => {
-        axios.post('localhost:4000/api/raw-materials', values, {
-            headers: { "api-jwt": "" },
-        }).then((response)=> {
-            console.log(response.status);
+        axios.post('http://localhost:4000/api/users', values).then((response)=> {
+            console.log(response);
             history.push();
         });
     }
@@ -46,20 +47,56 @@ const Register = () => {
                 />
             </Form.Field>
             <Form.Field>
-                <label>Value per Ton</label>
-                <input placeholder="Value per Ton" 
-                type="number"
-                id="valuePerTon"
-                value={values.valuePerTon}
+                <label>Username</label>
+                <input placeholder="username" 
+                type="text"
+                id="username"
+                value={values.username}
                 onChange={inputsHandler}
                 />
             </Form.Field>
             <Form.Field>
-                <label>Weight in grams per cubic meter </label>
-                <input placeholder="Grams per cubic Meter" 
+                <label>Email</label>
+                <input placeholder="email" 
+                type="email"
+                id="email"
+                value={values.email}
+                onChange={inputsHandler}
+                />
+            </Form.Field>
+            <Form.Field>
+                <label>Password</label>
+                <input placeholder="password" 
+                type="password"
+                id="password"
+                value={values.password}
+                onChange={inputsHandler}
+                />
+            </Form.Field>
+            <Form.Field>
+                <label>Age</label>
+                <input placeholder="age" 
                 type="number"
-                id="weightGcubicM"
-                value={values.weightGcubicM}
+                id="age"
+                value={values.age}
+                onChange={inputsHandler}
+                />
+            </Form.Field>
+            <Form.Field>
+                <label>ID</label>
+                <input placeholder="id" 
+                type="number"
+                id="id"
+                value={values.id}
+                onChange={inputsHandler}
+                />
+            </Form.Field>
+            <Form.Field>
+                <label>If you are Admin put iamadmin</label>
+                <input placeholder="Are you Admin? " 
+                type="text"
+                id="isAdmin"
+                value={values.isAdmin}
                 onChange={inputsHandler}
                 />
             </Form.Field>

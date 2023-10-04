@@ -26,6 +26,17 @@ export const addUser = async (req, res) => {
     }
 };
 
+export const updateUser = async (req, res ) => {
+
+
+
+};
+
+
+export const deleteUser = async (req, res) => {
+
+};
+
 export const loginUser = async (req, res = response) => {
     try {
         const {username, password} = req.body;

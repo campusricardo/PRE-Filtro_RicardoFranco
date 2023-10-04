@@ -25,8 +25,8 @@ const RawMaterial = () => {
     };
 
     const postData = () => {
-        axios.post('localhost:4000/api/raw-materials', values, {
-            headers: { "api-jwt": "" },
+        axios.post('http://localhost:4000/api/raw-materials', values, {
+            headers: { "api-jwt": localStorage.getItem('api-token') },
         }).then((response)=> {
             console.log(response.status);
             history.push();

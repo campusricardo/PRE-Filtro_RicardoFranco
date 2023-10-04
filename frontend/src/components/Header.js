@@ -1,21 +1,25 @@
-import React, {Fragment, useEffect} from "react";
+import React, {Fragment} from "react";
 import { BrowserRouter as Router,Switch, Route, Link } from "react-router-dom";
 import Login from "./Login";
 import Home from "./Home";
 import Register from "./Register";
 import RawMaterial from "./RawMaterials";
 import './Header.css';
-
+import logout from '../data/logout.svg';
+import recycling from '../data/recycling.svg';
 const Header = () => {
 
-    useEffect(()=> {
 
-    }, []);
     return (
         <Fragment>
       <Router>
         <div className="Header">
           <ul>
+            <li>
+              <Link to='/home'>
+              <img src={recycling} alt="Recycling Logo"></img>
+              </Link>
+            </li>
             <li>
               <Link to='/login'>
                 Login
@@ -34,6 +38,11 @@ const Header = () => {
             <li>
               <Link to='/contribute'>
               Contribute
+              </Link>
+            </li>
+            <li>
+              <Link to='/logout'>
+                <img src={logout} alt="Log Out Icon"/>
               </Link>
             </li>
           </ul>
