@@ -1,100 +1,40 @@
-import React, {useState} from "react";
+import React from "react";
 import './Home.css';
-import {Button, Form} from 'semantic-ui-react';
 
 const Home = () => {
-    const [values, setValues] = useState({
-        name: '',
-        username: '',
-        email: '',
-        password: '',
-        age: '',
-        id: '',
-        isAdmin: ''
-    });
-    const inputsHandler = (e) => {
-        const value = e.target.type === 'number' ? Number(e.target.value) : e.target.value;
-        const key = e.target.id;
-        setValues((prevValue) => { 
-            return {...prevValue, [key]: value};
-        });
-    };
+  
 
-    const modUser = () => {
-    }
 
     return (
         <main >
+            <article className="home-article">
+                <section>
+                    <h2> Welcome to Standard Recycling Company 🏢 - Guiding the Way to Smarter Recycling 🌳</h2>
+                    <p> 
+At Standard Recycling Company, we're revolutionizing the recycling industry with cutting-edge technology that simplifies waste sorting and recycling like never before. We understand that responsible waste management is crucial for a sustainable future, and that's why we've developed a powerful API that takes the guesswork out of sorting and directs waste to the right bins.</p>
+                </section>
+                <section>
+                    
+                    <h2> Why Choose Standard Recycling Company?</h2>
+<p>
+Environmental Impact: By ensuring waste goes to the correct recycling bins, our API plays a pivotal role in minimizing landfill waste, conserving resources, and reducing the carbon footprint.
 
-            <Form className="home">
-            <div> <h2> Update user data </h2> </div>
-            <Form.Field>
-                <label>Name</label>
-                <input placeholder="Name" 
-                type="text"
-                id="name"
-                value={values.name}
-                onChange={inputsHandler}
-                />
-            </Form.Field>
-            <Form.Field>
-                <label>Username</label>
-                <input placeholder="username" 
-                type="text"
-                id="username"
-                value={values.username}
-                onChange={inputsHandler}
-                />
-            </Form.Field>
-            <Form.Field>
-                <label>Email</label>
-                <input placeholder="email" 
-                type="email"
-                id="email"
-                value={values.email}
-                onChange={inputsHandler}
-                />
-            </Form.Field>
-            <Form.Field>
-                <label>Password</label>
-                <input placeholder="password" 
-                type="password"
-                id="password"
-                value={values.password}
-                onChange={inputsHandler}
-                />
-            </Form.Field>
-            <Form.Field>
-                <label>Age</label>
-                <input placeholder="age" 
-                type="number"
-                id="age"
-                value={values.age}
-                onChange={inputsHandler}
-                />
-            </Form.Field>
-            <Form.Field>
-                <label>ID</label>
-                <input placeholder="id" 
-                type="number"
-                id="id"
-                value={values.id}
-                onChange={inputsHandler}
-                />
-            </Form.Field>
-            <Form.Field>
-                <label>If you are Admin put iamadmin</label>
-                <input placeholder="Are you Admin? " 
-                type="text"
-                id="isAdmin"
-                value={values.isAdmin}
-                onChange={inputsHandler}
-                />
-            </Form.Field>
-            <Button onClick={modUser}> Change User Data</Button>
-            <Button> Delete User </Button>
+Cost Efficiency: Businesses and municipalities can save on waste management costs by reducing contamination and optimizing recycling processes.
 
-            </Form>
+User-Friendly: Our API is designed to be user-friendly, promoting recycling awareness and making it easy for everyone to participate in the recycling movement.
+</p>
+
+                </section>
+                <section>
+                    <h2>Join Us in the Recycling Revolution</h2>
+                    <p>
+
+At Standard Recycling Company, we believe that recycling should be accessible and straightforward for all. We invite you to explore our website and discover how our API can make a significant difference in your waste management efforts. Together, we can create a more sustainable future by ensuring that every piece of waste ends up in the right bin, where it belongs.
+
+Welcome to a world where waste sorting is smarter, more efficient, and more environmentally friendly. Welcome to Standard Recycling Company.
+                    </p>
+                </section>
+            </article>
 
         </main>
     );

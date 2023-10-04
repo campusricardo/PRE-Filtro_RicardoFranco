@@ -14,9 +14,9 @@ const validateJWT = async (req = request, res = response, next) => {
 
     const {uid} = jwt.verify( token, process.env.SECRET_KEY );
 
-
+    console.log(uid);
     const user = await userSchema.findById(uid);
-
+    console.log(user);
     if ( !user ) {
         return res.status(401).json({
             msg: 'This token has expired'

@@ -5,9 +5,11 @@ import Home from "./Home";
 import Register from "./Register";
 import RawMaterial from "./RawMaterials";
 import Market from "./Market";
+import Account from "./Account";
 import './Header.css';
 import logout from '../data/logout.svg';
 import recycling from '../data/recycling.svg';
+import settings from '../data/settings.svg';
 const Header = () => {
 
 
@@ -51,6 +53,13 @@ const Header = () => {
               </Link>
             </li>
             <li>
+              <Link to='/account'>
+                <figure className="logo">
+                <img src={settings} alt="Account Settings"/>
+                </figure>
+              </Link>
+            </li>
+            <li>
               <Link to='/logout'>
                 <figure className="logo">
                 <img src={logout} alt="Log Out Icon"/>
@@ -60,9 +69,12 @@ const Header = () => {
           </ul>
         </div>
         <Switch>
+        <Route path="/account">
+            <Account />
+        </Route>
         <Route path="/buy">
             <Market />
-          </Route>
+        </Route>
           <Route path="/contribute">
             <RawMaterial />
           </Route>

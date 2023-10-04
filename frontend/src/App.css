@@ -7,15 +7,43 @@ html {
     font-size: 62.5%;
 }
 .App {
-    height: 100vh;
-    width: 100vw;
+    min-height: 100vh;
+    font-family: 'Lato', sans-serif;
     display: grid;
+    position: relative;
     grid-template: 
-    "header header header" 15%
-    "main main main" auto
+    "header header header" 10%
+    "main main main" 80%
+    "footer footer footer" auto
     ;
 }
 
+.footer {
+    grid-area: footer;
+    background-color: rgb(59,134,36);
+
+}
+
+.footer ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    margin: 0rem 3rem 0rem 3rem;
+}
+
+.footer ul li {
+    list-style: none;
+}
+
+.footer-logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    justify-content: space-around;
+}
 
 
 main {
