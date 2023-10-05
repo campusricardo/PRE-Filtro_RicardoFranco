@@ -5,6 +5,6 @@ import validateDocuments from "../middlewares/validate.documents.js";
 import validateJWT from "../middlewares/validate.jwt.js";
 const router = Router();
 
-router.post('/portafolios',[], addCommoditie);
+router.post('/portafolios/:raw',[validateJWT], addCommoditie);
 
 export default router
