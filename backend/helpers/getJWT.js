@@ -17,4 +17,4 @@ const getJWT = (token) => {
 
 }
 
-export default getJWT
+export default getJWT;

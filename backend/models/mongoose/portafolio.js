@@ -1,7 +1,7 @@
 import {Schema, model} from 'mongoose';
 
 const portafolioSchema = Schema({
-    "total-value": {
+    totalValue: {
         type: Number,
         default: 0
     },

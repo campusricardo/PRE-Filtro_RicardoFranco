@@ -21,7 +21,7 @@ const Header = () => {
             <li>
               <Link to='/home'>
                 <figure className="logo">
-                  <figcaption> standart-recycling-company</figcaption>
+                  <figcaption> standard-recycling-company</figcaption>
                 <img src={recycling} alt="Recycling Logo"></img>
 
                 </figure>
