@@ -24,22 +24,4 @@ const portafolioSchema = Schema({
         }]
 });
 
-portafolioSchema.pre('save', async function(next) {
-    try {
-      const commodities = this.commodities;
-      for (let i = 0; i < commodities.length; i++) {
-        const obj = commodities[i];
-        const weightInKilos = obj.weightInKilos;
-        const material = await rawMaterial.findById(obj.materialId);
-        
-        if (material) {
-          obj.value = (weightInKilos / 1000) * material.valuePerTon;
-        }
-      }
-      next();
-    } catch (error) {
-      next(error);
-    }
-  });
-
 export default model('portafolios', portafolioSchema);

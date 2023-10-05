@@ -1,10 +1,19 @@
 import { Router } from "express";
-import { check } from "express-validator";
-import { addCommoditie} from "../controllers/portafolio.controllers.js";
+import { check, param } from "express-validator";
+import { addCommoditie, sellPortafolio} from "../controllers/portafolio.controllers.js";
 import validateDocuments from "../middlewares/validate.documents.js";
 import validateJWT from "../middlewares/validate.jwt.js";
+import {validateRawMaterial} from "../middlewares/db.validators.js";
 const router = Router();
 
-router.post('/portafolios/:raw',[validateJWT], addCommoditie);
+router.post('/portafolios/:raw',[
+    validateDocuments,
+    validateJWT], addCommoditie);
 
-export default router
+router.delete('/portafolios/:raw', [
+    validateJWT,
+    validateRawMaterial,
+    validateDocuments,
+], sellPortafolio);
+
+export default router;
