@@ -83,6 +83,8 @@ export const deleteUser = async (req, res) => {
         const {apijwt } = req.headers;
         const id = await getJWT(apijwt);
         const user = await userSchema.findByIdAndDelete(id);
+        const portafolio = await portafolioSchema.findByIdAndDelete(user.portafolio);
+        console.log(user);
         res.status(202).json({
             status: "success",
             result: `User ${user.username} deleted successfully`
@@ -101,24 +103,24 @@ export const loginUser = async (req, res = response) => {
         const {username, password} = req.body;
         const user = await userSchema.findOne({username});
         if (!user) {
-            return res.json({
+            return res.status(405).json({
                 message: "Your Password or your username is wrong"
             })
         }
         const validatePassword = await bcryptjs.compare(password, user.password);
         if (!validatePassword) {
             return res.status(400).json({
-                msg:"Your Password or your username is wrong"
+                message:"Your Password or your username is wrong"
             })
         }
         
         const token = await generateJWT(user._id)
-        res.json({
+        return res.status(202).json({
            user,
            token
         })
 
     } catch (error) {
-        res.status.json({msg: 'Something Wrong Happen'});
+        res.status(404).json({message: 'Something Wrong Happen'});
     }
 };

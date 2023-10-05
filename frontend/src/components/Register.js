@@ -30,7 +30,11 @@ const Register = () => {
     const postData = () => {
         axios.post('http://localhost:4000/api/users', values).then((response)=> {
             console.log(response);
+            alert('Usuario Creado Correctamente');
             history.push();
+        }).catch((error) => {
+            console.log(error);
+            alert('Debes llenar todos los datos o ya se esta utilizando el username, id o email o estas colocando un email no valido osea que no tiene arroba');
         });
     }
 

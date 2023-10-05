@@ -75,7 +75,7 @@ export const deleteRawMaterial = async (req, res) => {
             });
         }
         return res.status(202).json({
-            status: "success",
+            status: "The Raw Material was successfully deleted",
             result: del
         });
 

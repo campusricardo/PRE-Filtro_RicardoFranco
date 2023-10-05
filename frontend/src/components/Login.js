@@ -28,6 +28,10 @@ const Login = () => {
             localStorage.setItem('api-token', response.data.token)
             console.log(response);
             history.push();
+            return alert('Log In successfully');
+        }).catch((error) =>{
+            console.log(error);
+            return alert('Your Password or Username is Wrong');
         });
     }
 

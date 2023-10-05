@@ -1,16 +1,13 @@
 import React, {useState} from "react";
+import {useHistory} from 'react-router';
+
 import './Home.css';
 import {Button, Form} from 'semantic-ui-react';
-
+import axios from "axios";
 const Account = () => {
+    let history = useHistory();
     const [values, setValues] = useState({
-        name: '',
-        username: '',
-        email: '',
-        password: '',
-        age: '',
-        id: '',
-        isAdmin: ''
+
     });
     const inputsHandler = (e) => {
         const value = e.target.type === 'number' ? Number(e.target.value) : e.target.value;
@@ -21,6 +18,16 @@ const Account = () => {
     };
 
     const modUser = () => {
+        axios.patch('http://localhost:4000/api/users', values, {
+            headers: { "apiJWT": localStorage.getItem('api-token') },
+        }).then((response)=> {
+            console.log(response.status);
+            alert('Usuario Actualizado exitosamente');
+            history.push();
+        }).catch((error)=> {
+            console.log(error);
+            alert(` Si no estas logueado loguearse porfavor.`)
+        });
     }
 
     return (

@@ -29,7 +29,12 @@ const RawMaterial = () => {
             headers: { "apiJWT": localStorage.getItem('api-token') },
         }).then((response)=> {
             console.log(response.status);
+            alert('Materia prima creada con exito');
             history.push();
+        }).catch((error)=> {
+            console.log(error);
+            alert(` Si no estas logueado loguearse porfavor.
+            Si si estas logueado, hubo un inconveniente al cargar los datos, puede ser que esta materia prima ya se creo o que no estas colocando todos los datos`)
         });
     }
 
