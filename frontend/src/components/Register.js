@@ -104,7 +104,7 @@ const Register = () => {
                 onChange={inputsHandler}
                 />
             </Form.Field>
-            <Button className="button-form"type='submit' onClick={postData} > Crear </Button>
+            <Button className="button-form" type='submit' onClick={postData} > Crear </Button>
         </Form>
     </main>
     );

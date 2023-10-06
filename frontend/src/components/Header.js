@@ -11,7 +11,10 @@ import logout from '../data/logout.svg';
 import recycling from '../data/recycling.svg';
 import settings from '../data/settings.svg';
 const Header = () => {
-
+  const logOut = () => {
+    localStorage.removeItem('api-token');
+    alert('Log Out Successfully');
+  };
 
     return (
         <Fragment>
@@ -60,7 +63,7 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link to='/logout'>
+              <Link to='/login' onClick={logOut}>
                 <figure className="logo">
                 <img src={logout} alt="Log Out Icon"/>
                 </figure>

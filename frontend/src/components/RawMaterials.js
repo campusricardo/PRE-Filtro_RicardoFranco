@@ -34,7 +34,9 @@ const RawMaterial = () => {
         }).catch((error)=> {
             console.log(error);
             alert(` Si no estas logueado loguearse porfavor.
-            Si si estas logueado, hubo un inconveniente al cargar los datos, puede ser que esta materia prima ya se creo o que no estas colocando todos los datos`)
+            Si si estas logueado, hubo un inconveniente al cargar los datos, puede ser que esta materia prima ya se creo o que no estas colocando todos los datos o mas importante de que no seas ADMIN
+            Si no eres admin asegurade en ir a la tuerquita y colocar en if you are admin    iamadmin
+            `)
         });
     }
 

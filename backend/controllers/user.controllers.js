@@ -31,11 +31,12 @@ export const updateUser = async (req, res ) => {
         
         const {apijwt } = req.headers;
         const {name, username, email, password, age, id, isAdmin} = req.body;
-
+        console.log(isAdmin);
         const oid = await getJWT(apijwt);
         const modifyUser = await userSchema.findByIdAndUpdate(oid,{name, username, email, password, age, id});
         if (isAdmin === process.env.ADMIN) {
-            modifyUser.isAdmin = false;
+            console.log('xd');
+            modifyUser.isAdmin = true;
         }
         if (password) 
         {

@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {useHistory} from 'react-router';
-
 import './Account.css';
-import {Button, Form} from 'semantic-ui-react';
+import {Button, Confirm, Form} from 'semantic-ui-react';
 import axios from "axios";
 const Account = () => {
     let history = useHistory();
@@ -23,6 +22,8 @@ const Account = () => {
         setValues(response.data.result);
         console.log(values);
     }).catch((error)=> {
+        console.log(error);
+        history.push('/login')
         alert('Debes loguearte Primero')
     });
 }, []);
@@ -33,7 +34,20 @@ const Account = () => {
             return {...prevValue, [key]: value};
         });
     };
+    const delUser = () => {
+        const verify = window.confirm('Are you sure you want to delete the user');
+        if (Confirm) {
+            axios.delete('http://localhost:4000/api/users', {
+            headers: { "apiJWT": localStorage.getItem('api-token')}
+        }).then((res) => {
+            
+        }).catch((error)=> {
 
+        });
+        }
+        return ;
+        
+    };
     const modUser = () => {
         axios.patch('http://localhost:4000/api/users', values, {
             headers: { "apiJWT": localStorage.getItem('api-token') },
@@ -116,7 +130,7 @@ const Account = () => {
                 />
             </Form.Field>
             <Button className="button-form" onClick={modUser}> Change User Data</Button>
-            <Button className="button-form" > Delete User </Button>
+            <Button className="button-form" onClick={delUser}> Delete User </Button>
 
             </Form>
 
