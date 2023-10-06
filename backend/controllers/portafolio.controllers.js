@@ -13,9 +13,7 @@ export const getPortafolio = async (req, res ) => {
 
     return res.status(200).json({
         status: 'success',
-        result: {
-            portafolio: portafolio.portafolio
-        }
+        result: portafolio.portafolio
     });
     } catch (error) {
         console.log(error);
