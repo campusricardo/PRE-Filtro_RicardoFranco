@@ -1,16 +1,16 @@
 import {Schema, model} from 'mongoose';
 
-const wasteObjectSchema = Schema({
+const binSchema = Schema({
     name: {
         type: String,
         unique: [true, 'This name is already in the database'],
         required: [true, ' The name is required']
     },
-    bin: {
-        type: Schema.Types.ObjectId,
-        ref: 'bins',
+    binColor: {
+        type: String,
+        unique: true,
         required: true
     }
 });
 
-export default model('wasteObjects', wasteObjectSchema);
+export default model('bins', binSchema);

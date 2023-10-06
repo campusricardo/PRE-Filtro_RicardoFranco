@@ -4,6 +4,8 @@ import dbConnection from '../database/config.js';
 import userRouter from '../routes/user.routes.js';
 import rawMaterialRouter from '../routes/raw-materials.routes.js';
 import portafolioRouter from '../routes/portafolios.routes.js';
+import binRouter from '../routes/bin.routes.js';
+import wasteObjectRouter from '../routes/wasteObject.routes.js';
 export default class Server {
     constructor(){
         this.api = '/api';
@@ -25,6 +27,8 @@ export default class Server {
         this.app.use(this.api, userRouter);
         this.app.use(this.api, rawMaterialRouter);
         this.app.use(this.api, portafolioRouter);
+        this.app.use(this.api, binRouter);
+        this.app.use(this.api, wasteObjectRouter);
     }
     listen() {
         this.app.listen(process.env.PORT, ()=> {

@@ -2,6 +2,7 @@ import userSchema from "../models/mongoose/user.js";
 import rawMaterialSchema from "../models/mongoose/raw-material.js";
 import getJWT from "../helpers/getJWT.js";
 import portafolioSchema from "../models/mongoose/portafolio.js";
+import binSchema from "../models/mongoose/bin.js";
  const verifyUser = async(req, res, next) => {
     try {
         const {username, email, id} = req.body;
@@ -116,5 +117,26 @@ const validateRawMaterial = async(req, res, next) => {
     }
 };
 
-
-export  {verifyUser, verifyUserUpdate, verifyRawMaterialUpdate, validateRawMaterial};
+const validateBin = async (req, res, next) => {
+    try {
+        const {name, binColor} = req.body;
+        const bin = await binSchema.find({
+            $or: [
+                {name},
+                {binColor}
+            ]
+        });
+        if (bin.length > 0) {
+            return res.status(400).json({
+                msg: "name or binColor alredy in use"
+            });
+        }
+    next();
+    } catch (error) {
+        console.log(error);
+        return res.status(404).json({
+            msg: "An unexpected error have occur"
+        });
+    }
+};
+export  {verifyUser, verifyUserUpdate, verifyRawMaterialUpdate, validateRawMaterial, validateBin};
