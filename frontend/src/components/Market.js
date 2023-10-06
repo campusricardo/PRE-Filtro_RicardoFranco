@@ -5,6 +5,8 @@ import Commoditie from './Commoditie';
 
 const Market = () => {
     const [rawMaterials, setRawMaterials] = useState([]);
+    const [getPortafolio, setGetPortafolio] = useState([]);
+    const [] = useState([]);
     const [portafolios, setPortafolios] = useState({
         materialId: '',
         weightInKilos: ''});
@@ -23,6 +25,15 @@ const Market = () => {
             console.log(error);
             alert('Debes loguearte Primero')
         });
+
+        axios.get('http://localhost:4000/api/portafolios',
+        {headers: { "apiJWT": localStorage.getItem('api-token') }}
+        ).then((res)=> {
+            setGetPortafolio(res.data.result.portafolio.commodities);
+        }).catch((err)=> {
+            alert('Please log In');
+        });
+
     }, []);
 
     const buyRawMaterial = () => {
@@ -59,6 +70,17 @@ const Market = () => {
             </Form.Field>
             <Button className='button-form' onClick={buyRawMaterial}> Buy Raw Material</Button>
             </Form>
+            <article>
+                {
+                    getPortafolio.map((e)=>(
+                    <section>
+                        <p>materialId: {e.materialId}</p>
+                        <p>weightInKilos: {e.weightInKilos}</p>
+                        <p>value: {e.value}</p>
+                    </section>
+                    ))
+                }
+            </article>
         </main>
     )
 
