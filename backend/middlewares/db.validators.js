@@ -3,7 +3,8 @@ import rawMaterialSchema from "../models/mongoose/raw-material.js";
 import getJWT from "../helpers/getJWT.js";
 import portafolioSchema from "../models/mongoose/portafolio.js";
 import binSchema from "../models/mongoose/bin.js";
- const verifyUser = async(req, res, next) => {
+import wasteObjectSchema from "../models/mongoose/wasteObject.js";
+const verifyUser = async(req, res, next) => {
     try {
         const {username, email, id} = req.body;
         const user = await userSchema.find({
@@ -135,8 +136,96 @@ const validateBin = async (req, res, next) => {
     } catch (error) {
         console.log(error);
         return res.status(404).json({
+            status: "An unexpected error have occur"
+        });
+    };
+};
+
+const validateBinUpdate = async (req, res, next) => {
+    try {
+        const {name, binColor} = req.body;
+        const {bin} = req.params;
+        const binid = bin.trim();
+        const searchBin = await binSchema.findById(binid);
+        if (searchBin.length === 0) {
+            return res.status(404).json({
+                status: "There is no bin in the collection"
+            });
+        }
+        const verifyBin = await binSchema.find({
+            $or: [
+                {name},
+                {binColor}
+            ],
+            $and: [
+                {name: {$ne: searchBin.name}},
+                {binColor: {$ne: searchBin.binColor}}
+            ]
+        });
+        if (verifyBin.length > 0) {
+            return res.status(400).json({
+                msg: "name or binColor alredy in use"
+            });
+        }
+    next();
+    } catch (error) {
+        console.log(error);
+        return res.status(404).json({
             msg: "An unexpected error have occur"
         });
     }
 };
-export  {verifyUser, verifyUserUpdate, verifyRawMaterialUpdate, validateRawMaterial, validateBin};
+
+const validateWasteObject = async (req, res ,next) => {
+    try {
+        const {name} = req.body;
+        const wasteObject = await wasteObjectSchema.find({name});
+        if (wasteObject.length > 0) {
+            return res.status(400).json({
+                msg: "name or bin is alredy in use"
+            });
+        }
+    next();
+    } catch (error) {
+        console.log(error);
+        return res.status(404).json({
+            status: "An unexpected error have occur"
+        });
+    };
+}
+
+const validateWasteObjectUpdate = async (req, res, next) => {
+    try {
+        const {name} = req.body;
+        const {waste} = req.params;
+        console.log(waste);
+        const wasteId = waste.trim();
+        const searchWaste = await wasteObjectSchema.findById(wasteId);
+        if (searchWaste === null) {
+            return res.status(404).json({
+                status: "This waste Objectin is not in the database"
+            });
+        }
+        const verifyWaste = await wasteObjectSchema.find({
+            $or: [
+                {name}
+            ],
+            $and: [
+                {name: {$ne: searchWaste.name}}
+            ]
+        });
+        if (verifyWaste.length > 0) {
+            return res.status(400).json({
+                msg: "name or binColor alredy in use"
+            });
+        }
+    next();
+    } catch (error) {
+        console.log(error);
+        return res.status(404).json({
+            msg: "An unexpected error have occur"
+        });
+    }
+};
+
+export  {verifyUser, verifyUserUpdate, verifyRawMaterialUpdate, validateRawMaterial,validateBin ,validateBinUpdate, validateWasteObject, validateWasteObjectUpdate};

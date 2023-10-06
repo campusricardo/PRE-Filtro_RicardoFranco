@@ -37,8 +37,8 @@ const Login = () => {
 
         return (
             <main className="main">
-                <Form>
-                <Form.Field>
+                <Form className="from-container">
+                <Form.Field className="form-field">
                 <label>Username</label>
                 <input placeholder="Username" 
                 type="text"
@@ -47,7 +47,7 @@ const Login = () => {
                 onChange={inputsHandler}
                 />
                 </Form.Field>
-                <Form.Field>
+                <Form.Field className="form-field">
                 <label>Password</label>
                 <input placeholder="Password" 
                 type="password"
@@ -56,7 +56,7 @@ const Login = () => {
                 onChange={inputsHandler}
                 />
                 </Form.Field>
-                <Button type="submit" onClick={loginUser}> Login </Button>
+                <Button type="submit" className="button-form" onClick={loginUser}> Login </Button>
                 </Form>
             </main>
         );

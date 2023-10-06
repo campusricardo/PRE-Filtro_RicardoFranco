@@ -40,8 +40,8 @@ const RawMaterial = () => {
 
     return (
     <main className="main">
-        <Form>
-            <Form.Field>
+        <Form className="from-container">
+            <Form.Field className="form-field">
                 <label>Name</label>
                 <input placeholder="Name" 
                 type="text"
@@ -50,7 +50,7 @@ const RawMaterial = () => {
                 onChange={inputsHandler}
                 />
             </Form.Field>
-            <Form.Field>
+            <Form.Field className="form-field">
                 <label>Value per Ton</label>
                 <input placeholder="Value per Ton" 
                 type="number"
@@ -59,7 +59,7 @@ const RawMaterial = () => {
                 onChange={inputsHandler}
                 />
             </Form.Field>
-            <Form.Field>
+            <Form.Field className="form-field">
                 <label>Weight in grams per cubic meter </label>
                 <input placeholder="Grams per cubic Meter" 
                 type="number"
@@ -68,7 +68,7 @@ const RawMaterial = () => {
                 onChange={inputsHandler}
                 />
             </Form.Field>
-            <Button type='submit' onClick={postData} > Crear </Button>
+            <Button className="button-form" type='submit' onClick={postData} > Create </Button>
         </Form>
     </main>
     );

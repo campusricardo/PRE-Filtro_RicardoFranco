@@ -19,18 +19,19 @@ const validateJWT = async (req = request, res = response, next) => {
         return res.status(401).json({
             msg: 'This token has expired'
         })
-    } 
+    }
 
-    if (req.url === "/raw-materials" && user.isAdmin === false && req.method !== "GET") {
+
+    if ((req.url.startsWith("/raw-materials") || req.url.startsWith("/bins") || req.url.startsWith("/waste-objects")) && (user.isAdmin === false && req.method !== "GET")) {
         return res.status(401).json({
-            message: "You aren't an Admin so you cannot touch the raw-materials API 🥵"
+            message: "You aren't an Admin so you cannot touch the neither raw materials nor bins and waste objects 🥵"
         });
     }
     next();
     
     } catch (error) {
         console.log(error);
-        res.status(401).json({ msg: 'Please Log In Again 🥵'});
+        res.status(401).json({ msg: 'Please Log In Again'});
     }
 
 };

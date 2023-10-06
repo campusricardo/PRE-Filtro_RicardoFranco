@@ -1,14 +1,23 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {useHistory} from 'react-router';
 
-import './Home.css';
+import './Account.css';
 import {Button, Form} from 'semantic-ui-react';
 import axios from "axios";
 const Account = () => {
     let history = useHistory();
     const [values, setValues] = useState({
-
+        name: '',
+        username: '',
+        email: '',
+        password: '',
+        age: '',
+        id: ''
     });
+    
+   useEffect(()=>  {
+    console.log('a');
+}, [values]);
     const inputsHandler = (e) => {
         const value = e.target.type === 'number' ? Number(e.target.value) : e.target.value;
         const key = e.target.id;
@@ -18,24 +27,25 @@ const Account = () => {
     };
 
     const modUser = () => {
-        axios.patch('http://localhost:4000/api/users', values, {
-            headers: { "apiJWT": localStorage.getItem('api-token') },
-        }).then((response)=> {
-            console.log(response.status);
-            alert('Usuario Actualizado exitosamente');
-            history.push();
-        }).catch((error)=> {
-            console.log(error);
-            alert(` Si no estas logueado loguearse porfavor.`)
-        });
+        return setValues('a')
+        // axios.patch('http://localhost:4000/api/users', values, {
+        //     headers: { "apiJWT": localStorage.getItem('api-token') },
+        // }).then((response)=> {
+        //     console.log(response.status);
+        //     alert('Usuario Actualizado exitosamente');
+        //     history.push();
+        // }).catch((error)=> {
+        //     console.log(error);
+        //     alert(` Si no estas logueado loguearse porfavor.`)
+        // });
     }
 
     return (
         <main >
 
-            <Form className="home">
-            <div> <h2> Update user data </h2> </div>
-            <Form.Field>
+            <Form className="from-container">
+            <div className="div-top"> <h2> Update user data </h2> </div>
+            <Form.Field className="form-field">
                 <label>Name</label>
                 <input placeholder="Name" 
                 type="text"
@@ -44,7 +54,7 @@ const Account = () => {
                 onChange={inputsHandler}
                 />
             </Form.Field>
-            <Form.Field>
+            <Form.Field className="form-field">
                 <label>Username</label>
                 <input placeholder="username" 
                 type="text"
@@ -53,7 +63,7 @@ const Account = () => {
                 onChange={inputsHandler}
                 />
             </Form.Field>
-            <Form.Field>
+            <Form.Field className="form-field">
                 <label>Email</label>
                 <input placeholder="email" 
                 type="email"
@@ -62,7 +72,7 @@ const Account = () => {
                 onChange={inputsHandler}
                 />
             </Form.Field>
-            <Form.Field>
+            <Form.Field className="form-field">
                 <label>Password</label>
                 <input placeholder="password" 
                 type="password"
@@ -71,7 +81,7 @@ const Account = () => {
                 onChange={inputsHandler}
                 />
             </Form.Field>
-            <Form.Field>
+            <Form.Field className="form-field">
                 <label>Age</label>
                 <input placeholder="age" 
                 type="number"
@@ -80,7 +90,7 @@ const Account = () => {
                 onChange={inputsHandler}
                 />
             </Form.Field>
-            <Form.Field>
+            <Form.Field className="form-field">
                 <label>ID</label>
                 <input placeholder="id" 
                 type="number"
@@ -89,17 +99,17 @@ const Account = () => {
                 onChange={inputsHandler}
                 />
             </Form.Field>
-            <Form.Field>
-                <label>If you are Admin put iamadmin</label>
-                <input placeholder="Are you Admin? " 
+            <Form.Field className="form-field">
+                <label>If you are </label>
+                <input placeholder="Admin put iamadmin" 
                 type="text"
                 id="isAdmin"
                 value={values.isAdmin}
                 onChange={inputsHandler}
                 />
             </Form.Field>
-            <Button onClick={modUser}> Change User Data</Button>
-            <Button> Delete User </Button>
+            <Button className="button-form" onClick={modUser}> Change User Data</Button>
+            <Button className="button-form" > Delete User </Button>
 
             </Form>
 

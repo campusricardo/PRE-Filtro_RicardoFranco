@@ -63,7 +63,7 @@ export const getOneUser = async (req, res) => {
     try {
         const {apijwt } = req.headers;
         const id = await getJWT(apijwt);
-        const user = await userSchema.findById(id);
+        const user = await userSchema.findById(id, {_id: 0, portafolio: 0, isAdmin: 0, createdAt: 0, updatedAt: 0, __v: 0, password: 0});
 
         res.status(200).json({
             status: "success",

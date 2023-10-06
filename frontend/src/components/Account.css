@@ -1,0 +1,48 @@
+.from-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.div-top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.div-top h2 {
+    font-size: 2rem;
+
+}
+
+.form-field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form-field label {
+    font-size: 2rem;
+    margin-right: 1rem;
+    width: 100%;
+    background-color: rgba(70, 211, 26, 0.7);
+    padding: 0.3rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-field input {
+
+    border: none;
+
+}
+
+.button-form {
+    border: none;
+    padding: 1rem;
+    background-color: rgba(70, 211, 26, 0.7);
+}

@@ -3,7 +3,7 @@ import { check, param } from "express-validator";
 import { getBins, addBin, updateBin, deleteBin} from "../controllers/bin.controllers.js";
 import validateDocuments from "../middlewares/validate.documents.js";
 import validateJWT from "../middlewares/validate.jwt.js";
-import {validateBin} from "../middlewares/db.validators.js";
+import {validateBin, validateBinUpdate} from "../middlewares/db.validators.js";
 const router = Router();
 
 router.get('/bins', [validateJWT], getBins);
@@ -17,10 +17,14 @@ router.post('/bins', [
     validateDocuments
 ],addBin );
 
-router.patch('/bins', [
+router.patch('/bins/:bin', [
     validateJWT,
-    validateBin,
-    
+    validateBinUpdate,
+    validateDocuments
 ], updateBin);
+
+router.delete('/bins/:bin', [
+    validateJWT
+], deleteBin)
 
 export default router;

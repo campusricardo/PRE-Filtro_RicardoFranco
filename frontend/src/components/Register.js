@@ -40,8 +40,8 @@ const Register = () => {
 
     return (
     <main className="main">
-        <Form>
-            <Form.Field>
+        <Form className="from-container">
+            <Form.Field className="form-field">
                 <label>Name</label>
                 <input placeholder="Name" 
                 type="text"
@@ -50,7 +50,7 @@ const Register = () => {
                 onChange={inputsHandler}
                 />
             </Form.Field>
-            <Form.Field>
+            <Form.Field className="form-field">
                 <label>Username</label>
                 <input placeholder="username" 
                 type="text"
@@ -59,7 +59,7 @@ const Register = () => {
                 onChange={inputsHandler}
                 />
             </Form.Field>
-            <Form.Field>
+            <Form.Field className="form-field">
                 <label>Email</label>
                 <input placeholder="email" 
                 type="email"
@@ -68,7 +68,7 @@ const Register = () => {
                 onChange={inputsHandler}
                 />
             </Form.Field>
-            <Form.Field>
+            <Form.Field className="form-field">
                 <label>Password</label>
                 <input placeholder="password" 
                 type="password"
@@ -77,7 +77,7 @@ const Register = () => {
                 onChange={inputsHandler}
                 />
             </Form.Field>
-            <Form.Field>
+            <Form.Field className="form-field">
                 <label>Age</label>
                 <input placeholder="age" 
                 type="number"
@@ -86,7 +86,7 @@ const Register = () => {
                 onChange={inputsHandler}
                 />
             </Form.Field>
-            <Form.Field>
+            <Form.Field className="form-field">
                 <label>ID</label>
                 <input placeholder="id" 
                 type="number"
@@ -95,7 +95,7 @@ const Register = () => {
                 onChange={inputsHandler}
                 />
             </Form.Field>
-            <Form.Field>
+            <Form.Field className="form-field">
                 <label>If you are Admin put iamadmin</label>
                 <input placeholder="Are you Admin? " 
                 type="text"
@@ -104,7 +104,7 @@ const Register = () => {
                 onChange={inputsHandler}
                 />
             </Form.Field>
-            <Button type='submit' onClick={postData} > Crear </Button>
+            <Button className="button-form"type='submit' onClick={postData} > Crear </Button>
         </Form>
     </main>
     );
