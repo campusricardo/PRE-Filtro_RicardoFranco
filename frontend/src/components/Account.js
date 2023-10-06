@@ -16,8 +16,16 @@ const Account = () => {
     });
     
    useEffect(()=>  {
-    console.log('a');
-}, [values]);
+     axios.get('http://localhost:4000/api/users', {
+        headers: { "apiJWT": localStorage.getItem('api-token') }
+    }).then((response) =>{
+        console.log(response);
+        setValues(response.data.result);
+        console.log(values);
+    }).catch((error)=> {
+        alert('Debes loguearte Primero')
+    });
+}, []);
     const inputsHandler = (e) => {
         const value = e.target.type === 'number' ? Number(e.target.value) : e.target.value;
         const key = e.target.id;
@@ -27,17 +35,16 @@ const Account = () => {
     };
 
     const modUser = () => {
-        return setValues('a')
-        // axios.patch('http://localhost:4000/api/users', values, {
-        //     headers: { "apiJWT": localStorage.getItem('api-token') },
-        // }).then((response)=> {
-        //     console.log(response.status);
-        //     alert('Usuario Actualizado exitosamente');
-        //     history.push();
-        // }).catch((error)=> {
-        //     console.log(error);
-        //     alert(` Si no estas logueado loguearse porfavor.`)
-        // });
+        axios.patch('http://localhost:4000/api/users', values, {
+            headers: { "apiJWT": localStorage.getItem('api-token') },
+        }).then((response)=> {
+            console.log(response.status);
+            alert('Usuario Actualizado exitosamente');
+            history.push();
+        }).catch((error)=> {
+            console.log(error);
+            alert(` Si no estas logueado loguearse porfavor.`)
+        });
     }
 
     return (
