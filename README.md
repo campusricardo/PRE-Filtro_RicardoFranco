@@ -23,3 +23,14 @@ En Standard Recycling Company, creemos que el reciclaje debe ser accesible y sen
 
 ![Alt text](https://raw.githubusercontent.com/campusricardo/PRE-Filtro_RicardoFranco/ffffb82eecad0853c8b81d7ced0845431fde7a0e/backend/standard-recycling-company.svg "Optional title")
 
+**Como Poner en Funcionamiento el Proyecto**
+
+*Primero vamos  a hacer el comando para encender el server, en la carpeta del repositorio correr el comando cd backend y despues npm i && npm run dev. Ya con esto el sever estaria encendido*
+
+*Para encender el frontend solo debemos colocar cd frontend  correr el comando y despues correr npm i & npm start*
+
+
+
+**Donde esta el Swagger?**
+
+*El swagger esta en un archivo llamado openapi.yaml en la carpeta principal*

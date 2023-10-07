@@ -1,0 +1,294 @@
+openapi: 3.0.0
+info:
+  title: Standard Recycling API
+  version: 1.0.0
+paths:
+  /api/users:
+    post:
+      summary: Create a new user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Gustavo Bolivar
+                username:
+                  type: string
+                  example: gustavoBolivar
+                email:
+                  type: string
+                  example: gustavoBolivar@gmail.com
+                password:
+                  type: string
+                  example: 123456
+                age:
+                  type: integer
+                  example: 44
+                id:
+                  type: integer
+                  example: 32423
+                isAdmin:
+                  type: boolean
+                  example: true
+              required:
+                - name
+                - username
+                - email
+                - password
+      responses:
+        "201":
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: user created
+                  result:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: Gustavo Bolivar
+                      username:
+                        type: string
+                        example: gustavoBolivar
+                      email:
+                        type: string
+                        example: gustavoBolivar@gmail.com
+                      password:
+                        type: string
+                        example: "$2a$10$92ciBmoZ19rB9GPH0PIM4O53Nr/fSlqeWyda0mCJCSK.7pEi63.Ay"
+                      age:
+                        type: integer
+                        example: 44
+                      id:
+                        type: integer
+                        example: 32423
+                      portafolio:
+                        type: string
+                        example: "6520d5bb146f25cfa7f8f188"
+                      isAdmin:
+                        type: boolean
+                        example: true
+                      _id:
+                        type: string
+                        example: "6520d5bb146f25cfa7f8f189"
+                      createdAt:
+                        type: string
+                        format: date-time
+                        example: "2023-10-07T03:51:23.751Z"
+                      updatedAt:
+                        type: string
+                        format: date-time
+                        example: "2023-10-07T03:51:23.751Z"
+                      __v:
+                        type: integer
+                        example: 0
+    patch:
+      summary: Update user information
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Ricardo Franco
+                username:
+                  type: string
+                  example: riadfrancoq
+                email:
+                  type: string
+                  example: riadfrancoq@gmail.com
+                password:
+                  type: string
+                  example: 123456
+                age:
+                  type: integer
+                  example: 17
+                id:
+                  type: integer
+                  example: 11843512
+              required:
+                - name
+                - username
+                - email
+                - password
+      responses:
+        "200":
+          description: User information updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  result:
+                    type: object
+                    properties:
+                      _id:
+                        type: string
+                        example: "6520b89e7b58693776053bdf"
+                      name:
+                        type: string
+                        example: Ricardo Franco
+                      username:
+                        type: string
+                        example: riadfrancoq
+                      email:
+                        type: string
+                        example: riadfrancoq@gmail.com
+                      password:
+                        type: string
+                        example: "$2a$10$wbOl7eOjTDLcxpDW3BbnH.C9ij6md7rRv3maTCFMJVNZ1CE5aB/Xu"
+                      age:
+                        type: integer
+                        example: 17
+                      id:
+                        type: integer
+                        example: 14851351
+                      portafolio:
+                        type: string
+                        example: "6520b89e7b58693776053bde"
+                      isAdmin:
+                        type: boolean
+                        example: true
+                      createdAt:
+                        type: string
+                        format: date-time
+                        example: "2023-10-07T01:47:10.888Z"
+                      updatedAt:
+                        type: string
+                        format: date-time
+                        example: "2023-10-07T03:56:18.964Z"
+                      __v:
+                        type: integer
+                        example: 0
+    get:
+      summary: Get user information
+
+      responses:
+        "200":
+          description: User information retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  result:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: Ricardo Franco
+                      username:
+                        type: string
+                        example: riadfrancoq
+                      email:
+                        type: string
+                        example: riadfrancoq@gmail.com
+                      age:
+                        type: integer
+                        example: 17
+                      id:
+                        type: integer
+                        example: 11843512
+
+    delete:
+      summary: Delete a user
+      responses:
+        "200":
+          description: User deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  result:
+                    type: string
+                    example: User gustavoBolivar deleted successfully
+  /api/users/login:
+    post:
+      summary: User login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  example: riadfrancoq
+                password:
+                  type: string
+                  example: 123456
+              required:
+                - username
+                - password
+      responses:
+        "200":
+          description: User logged in successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    type: object
+                    properties:
+                      _id:
+                        type: string
+                        example: "6520b89e7b58693776053bdf"
+                      name:
+                        type: string
+                        example: Ricardo Franco
+                      username:
+                        type: string
+                        example: riadfrancoq
+                      email:
+                        type: string
+                        example: riadfrancoq@gmail.com
+                      password:
+                        type: string
+                        example: "$2a$10$rjRkKF3j40SBav/aNpHNxeURoeUGNUQDbGNmdTAwjH71HJuMDdVJS"
+                      age:
+                        type: integer
+                        example: 17
+                      id:
+                        type: integer
+                        example: 14851351
+                      portafolio:
+                        type: string
+                        example: "6520b89e7b58693776053bde"
+                      isAdmin:
+                        type: boolean
+                        example: true
+                      createdAt:
+                        type: string
+                        format: date-time
+                        example: "2023-10-07T01:47:10.888Z"
+                      updatedAt:
+                        type: string
+                        format: date-time
+                        example: "2023-10-07T01:47:10.888Z"
+                      __v:
+                        type: integer
+                        example: 0
+                  token:
+                    type: string
+                    example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NTIwYjg5ZTdiNTg2OTM3NzYwNTNiZGYiLCJpYXQiOjE2OTY2NTA3OTksImV4cCI6MTY5NjY4Njc5OX0.XluQtc3KVWxEpjfNWXoV15zs5WBbdQdY-t4SAozTh9I"
