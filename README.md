@@ -43,4 +43,4 @@ En Standard Recycling Company, creemos que el reciclaje debe ser accesible y sen
 
 *o tambien puede por este Link*
 
-[Postaman](https://speeding-satellite-484644.postman.co/workspace/New-Team-Workspace~b08fd237-dfc0-43da-b17e-4d1fe462aa4f/collection/28220048-e09ba8a1-a1ea-4e7d-bdca-ad0180ed6c9f?action=share&creator=28220048)
+[Postman](https://speeding-satellite-484644.postman.co/workspace/New-Team-Workspace~b08fd237-dfc0-43da-b17e-4d1fe462aa4f/collection/28220048-e09ba8a1-a1ea-4e7d-bdca-ad0180ed6c9f?action=share&creator=28220048)
