@@ -34,3 +34,7 @@ En Standard Recycling Company, creemos que el reciclaje debe ser accesible y sen
 **Donde esta el Swagger?**
 
 *El swagger esta en un archivo llamado openapi.yaml en la carpeta principal*
+
+**Aclaraciones**
+
+*Van a aparecer alerts repetirse muchas veces cuando coloquemos un dato erroreo, o estemos intentado hacer sin estar logueado. Esto es debido a que estoy utilizando   <React.StrictMode> creo.*
