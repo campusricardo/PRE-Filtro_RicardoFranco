@@ -38,3 +38,9 @@ En Standard Recycling Company, creemos que el reciclaje debe ser accesible y sen
 **Aclaraciones**
 
 *Van a aparecer alerts repetirse muchas veces cuando coloquemos un dato erroreo, o estemos intentado hacer sin estar logueado. Esto es debido a que estoy utilizando   <React.StrictMode> creo.*
+
+*La coleccion de Postman se le envio por gmail, se coloco el email que enpieza por pedrogomez*
+
+*o tambien puede por este Link*
+
+[Postaman](https://speeding-satellite-484644.postman.co/workspace/New-Team-Workspace~b08fd237-dfc0-43da-b17e-4d1fe462aa4f/collection/28220048-e09ba8a1-a1ea-4e7d-bdca-ad0180ed6c9f?action=share&creator=28220048)
