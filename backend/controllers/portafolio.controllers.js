@@ -6,18 +6,17 @@ import {mongo} from 'mongoose';
 
 export const getPortafolio = async (req, res ) => {
     try {
-        const {apijwt} = req.headers; 
+        const { apijwt } = req.headers;
         const oid = await getJWT(apijwt);
-        const portafolio = await userSchema.findById(oid, {portafolio: 1,  _id: 0}).populate('portafolio');
-
-
-    return res.status(200).json({
-        status: 'success',
-        result: portafolio.portafolio
-    });
+    
+        const user = await userSchema.findById(oid, { portafolio: 1, _id: 0 });
+        const portafolio = await portafolioSchema.findById(user.portafolio, {_id: 0, 'commodities': 1}).populate('commodities.materialId')
+        res.json({
+        portafolio
+        })
     } catch (error) {
         console.log(error);
-        return res.status(404).json({msg: 'Something went wrong'});
+        return res.status(404).json({ msg: 'Something went wrong' });
     }
 };
 
@@ -155,9 +154,8 @@ export const deletePortafolio = async(req, res) => {
         const oid = await getJWT(apijwt);
         const userPortafolio = await userSchema.findById(oid, {_id: 0, portafolio: 1, totalValue: 1 });
         const portafolio = await portafolioSchema.findByIdAndUpdate(userPortafolio.portafolio, {totalValue: 0, commodities: []});
-    
         res.status(202).json({
-            status: `Portafolio deleted successfully with a total Value before deleting it ${userPortafolio.totalValue}`
+            status: `Portafolio deleted successfully with a total Value before deleting it ${portafolio.totalValue}`
         })
     } catch (error) {
         console.log(error);

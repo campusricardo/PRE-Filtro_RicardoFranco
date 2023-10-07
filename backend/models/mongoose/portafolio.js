@@ -10,7 +10,7 @@ const portafolioSchema = Schema({
          [{
             materialId: {
                 type: Schema.Types.ObjectId,
-                ref: 'raw-materials'
+                ref: 'RawMaterials'
                 },
                 weightInKilos: {
                     type: Number,

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {useHistory} from 'react-router';
 import './Account.css';
-import {Button, Confirm, Form} from 'semantic-ui-react';
+import {Button, Form} from 'semantic-ui-react';
 import axios from "axios";
 const Account = () => {
     let history = useHistory();
@@ -36,13 +36,15 @@ const Account = () => {
     };
     const delUser = () => {
         const verify = window.confirm('Are you sure you want to delete the user');
-        if (Confirm) {
+        if (verify) {
             axios.delete('http://localhost:4000/api/users', {
             headers: { "apiJWT": localStorage.getItem('api-token')}
         }).then((res) => {
-            
+            localStorage.removeItem('api-token');
+            history.push('/register');
+            alert('Usuario Eliminado Correctamente')
         }).catch((error)=> {
-
+            alert('Hubo un problema borrando tu cuenta');
         });
         }
         return ;

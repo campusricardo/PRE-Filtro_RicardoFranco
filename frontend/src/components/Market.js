@@ -6,7 +6,6 @@ import Commoditie from './Commoditie';
 const Market = () => {
     const [rawMaterials, setRawMaterials] = useState([]);
     const [getPortafolio, setGetPortafolio] = useState([]);
-    const [] = useState([]);
     const [portafolios, setPortafolios] = useState({
         materialId: '',
         weightInKilos: ''});
@@ -29,8 +28,9 @@ const Market = () => {
         axios.get('http://localhost:4000/api/portafolios',
         {headers: { "apiJWT": localStorage.getItem('api-token') }}
         ).then((res)=> {
-            setGetPortafolio(res.data.result.portafolio.commodities);
+            setGetPortafolio(res.data.portafolio.commodities);
         }).catch((err)=> {
+            console.log(err);
             alert('Please log In');
         });
 
@@ -40,12 +40,27 @@ const Market = () => {
         axios.post(`http://localhost:4000/api/portafolios/${portafolios.materialId}`, {weightInKilos: Number(portafolios.weightInKilos)}, {
             headers: { "apiJWT": localStorage.getItem('api-token') }
         }).then((res) => {
-            alert('Commoditie Comprado Correctamente')
+            alert('Commoditie Comprado Correctamente');
+            window.location.reload();
+
         }).catch((error)=> {
             console.log(error);
             alert('Logueate o llena los campos restantes')
         });
     };
+
+    const delPortafolio = () => {
+        axios.delete(`http://localhost:4000/api/portafolios/`, {
+            headers: { "apiJWT": localStorage.getItem('api-token') }
+        }).then((res) => {
+            alert(res.data.status);
+            window.location.reload();
+        }).catch((error)=> {
+            console.log(error);
+            alert('Logueate o llena los campos restantes')
+        });
+    };
+
     const inputsHandlers = (e) => {
         
         setPortafolios((prev)=> {
@@ -69,12 +84,13 @@ const Market = () => {
             <input type='number' id='weightInKilos' onChange={inputsHandlers} value={portafolios.weightInKilos} placeholder='Weight'></input>
             </Form.Field>
             <Button className='button-form' onClick={buyRawMaterial}> Buy Raw Material</Button>
+            <Button className='button-form' onClick={delPortafolio}> Delete Portafolio </Button>
             </Form>
-            <article>
+            <article className='articleCom'>
                 {
                     getPortafolio.map((e)=>(
-                    <section>
-                        <p>materialId: {e.materialId}</p>
+                    <section className='section-commoditie'>
+                        <p>material: {e.materialId.name}</p>
                         <p>weightInKilos: {e.weightInKilos}</p>
                         <p>value: {e.value}</p>
                     </section>

@@ -18,4 +18,4 @@ const rawMaterialSchema = ({
 
 })
 
-export default model('raw-materials', rawMaterialSchema);
+export default model('RawMaterials', rawMaterialSchema);

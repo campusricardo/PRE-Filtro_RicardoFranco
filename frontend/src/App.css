@@ -57,3 +57,16 @@ main {
     justify-content: flex-start;
     
 }
+
+.section-commoditie {
+    display: flex;
+    background-color: rgb(59,134,36);
+    margin-top: 5rem;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+};
+
