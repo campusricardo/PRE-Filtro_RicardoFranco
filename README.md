@@ -28,3 +28,7 @@ Cuando Se entra a la aplicacion primero hay que registrarse, llenar todos los ca
 ``````
 
 [Figma](https://www.figma.com/file/Z5t3LgB6zXUPHkJd9B9Dw6/standard-recycling-company?type=design&node-id=0%3A1&mode=design&t=830fS6n8opZKdRlc-1)
+
+**Database Diagram**
+
+![Alt text](https://raw.githubusercontent.com/campusricardo/PRE-Filtro_RicardoFranco/ffffb82eecad0853c8b81d7ced0845431fde7a0e/backend/standard-recycling-company.svg "Optional title")
